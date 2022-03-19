@@ -1,0 +1,36 @@
+{
+  "name": "datasub_payment_app",
+  "version": "1.0.0",
+  "description": "Test for DataSub from 2022-03-19",
+  "main": "backend/server.js",
+  "scripts": {
+    "server": "nodemon backend/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thatkit/datasub-payment-app.git"
+  },
+  "keywords": [
+    "React.js",
+    "Reactstrap",
+    "ReduxToolkit",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "mongoose"
+  ],
+  "author": "thatkit",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thatkit/datasub-payment-app/issues"
+  },
+  "homepage": "https://github.com/thatkit/datasub-payment-app#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "mongoose": "^6.2.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
