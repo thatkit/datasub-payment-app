@@ -4,6 +4,10 @@ const Payment = require('./paymentSchema');
 
 const router = express.Router();
 
+// @route       POST api/submitPayment
+// @request     { CardNumber, ExpDate, Cvv, Amount }
+// @response    { RequestId, Amount }
+// @access      PUBLIC
 router.post('/submitPayment', (req, res) => {
     const newPayment = new Payment(req.body);
     
