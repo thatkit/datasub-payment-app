@@ -5,17 +5,27 @@ import {
     Label,
     FormFeedback
 } from 'reactstrap';
-// Hooks
+// React Hooks
 import { useState, useEffect } from 'react';
+// Redux Hooks & action dispatchers
+import { useDispatch } from 'react-redux';
+import { addCardNumber } from '../redux/apiSlice';
 // Helpers
 import { isStringLength, isNumber } from '../helpers/validation';
 
 export const CardNumber = () => {
+    const handleOnChange = ({ target }) => setCardNumber(target.value);
+    
+    // Internal state setup
     const [cardNumber, setCardNumber] = useState('');
     const [isInvalid, setIsInvalid] = useState(false);
     const [isValid, setIsValid] = useState(false);
 
-    const handleOnChange = ({ target }) => setCardNumber(target.value);
+    // Redux state setup
+    const dispatch = useDispatch();
+    useEffect(() => {
+        isValid && dispatch(addCardNumber(cardNumber));
+    }, [dispatch, cardNumber, isValid]);    
 
     // validation
     useEffect(() => {

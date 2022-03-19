@@ -4,17 +4,27 @@ import {
     Label,
     FormFeedback
 } from 'reactstrap';
-// Hooks
+// React Hooks
 import { useState, useEffect } from 'react';
+// Redux Hooks & action dispatchers
+import { useDispatch } from 'react-redux';
+import { addAmount } from '../redux/apiSlice';
 // Helpers
 import { isTwoDigitsAfterDecimalPoint } from '../helpers/validation';
 
 export const Amount = () => {
+    const handleOnChange = ({ target }) => setAmount(Number(target.value));
+
+    // Internal state setup
     const [amount, setAmount] = useState(0);
     const [isInvalid, setIsInvalid] = useState(false);
     const [isValid, setIsValid] = useState(false);
 
-    const handleOnChange = ({ target }) => setAmount(Number(target.value));
+    // Redux state setup
+    const dispatch = useDispatch();
+    useEffect(() => {
+        isValid && dispatch(addAmount(amount));
+    }, [dispatch, amount, isValid]);    
 
     // validation
     useEffect(() => {
