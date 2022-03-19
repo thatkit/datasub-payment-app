@@ -13,14 +13,23 @@ import { isCorrectMMYYYFormat, isNotExpired } from '../helpers/validation';
 
 export const ExpDate = () => {
     const [expDate, setExpDate] = useState('');
+    const [expDateMM, setExpDateMM] = useState('');
+    const [expDateYYYY, setExpDateYYYY] = useState('');
     const [isInvalid, setIsInvalid] = useState(false);
     const [isValid, setIsValid] = useState(false);
 
-    const handleOnChange = ({ target }) => setExpDate(target.value);
+    const handleOnChangeMM = ({ target }) => setExpDateMM(target.value);
+    const handleOnChangeYYYY = ({ target }) => setExpDateYYYY(target.value);
+
+    // turning into a single string
+    useEffect(() => {
+        expDateMM.length === 1 && setExpDateMM('0' + expDateMM);
+        setExpDate(expDateMM + '/' + expDateYYYY);
+    }, [expDateMM, expDateYYYY, expDate]);
 
     // validation
     useEffect(() => {
-        if (expDate === '') return setIsInvalid(false);
+        if (expDate === '' || expDate === '/') return setIsInvalid(false);
         if (isCorrectMMYYYFormat(expDate) && isNotExpired(expDate)) {
             setIsInvalid(false);
             setIsValid(true);
@@ -40,6 +49,7 @@ export const ExpDate = () => {
                         placeholder="MM"
                         type="text"
                         autoComplete="cc-exp-month"
+                        onChange={handleOnChangeMM}
                         invalid={isInvalid}
                         valid={isValid}                        
                     />
@@ -59,6 +69,7 @@ export const ExpDate = () => {
                         placeholder="YYYY"
                         type="text"
                         autoComplete="cc-exp-year"
+                        onChange={handleOnChangeYYYY}
                         invalid={isInvalid}
                         valid={isValid}
                     />
