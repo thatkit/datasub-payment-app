@@ -1,10 +1,19 @@
 import {
     FormGroup,
     Input,
-    Label
+    Label,
+    FormFeedback
 } from 'reactstrap';
+// Hooks
+import { useState, useEffect } from 'react';
 
 export const Amount = () => {
+    const [amount, setAmount] = useState('');
+    const [isInvalid, setIsInvalid] = useState(false);
+    const [isValid, setIsValid] = useState(false);
+
+    const handleOnChange = ({ target }) => setAmount(target.value);
+
     return (
         <FormGroup floating>
             <Input 
@@ -13,10 +22,16 @@ export const Amount = () => {
                 placeholder="Amount"
                 type="number"
                 autoComplete="transaction-amount"
+                onChange={handleOnChange}
+                invalid={isInvalid}
+                valid={isValid}                
             />
             <Label for="amount">
                 Amount
             </Label>
+            <FormFeedback tooltip>
+                Invalid
+            </FormFeedback>
         </FormGroup>
     )
 }
