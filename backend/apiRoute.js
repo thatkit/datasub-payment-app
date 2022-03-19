@@ -17,7 +17,9 @@ router.post('/submitPayment', (req, res) => {
             const { _id: RequestId, Amount } = payment;
             res.status(200).json({ RequestId, Amount });
         })
-        .catch(err => console.log(err)); // #
+        .catch(err => {
+            res.status(400).json({ err });
+        }); // #
 });
 
 module.exports = router;
