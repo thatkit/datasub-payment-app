@@ -24,7 +24,8 @@ export const Cvv = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         isValid && dispatch(addCvv(cvv));
-    }, [dispatch, cvv, isValid]);    
+        !isValid && dispatch(addCvv(''));
+    }, [dispatch, cvv, isValid]);
 
     // validation
     useEffect(() => {

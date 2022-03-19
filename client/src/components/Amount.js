@@ -24,6 +24,7 @@ export const Amount = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         isValid && dispatch(addAmount(amount));
+        !isValid && dispatch(addAmount(0));
     }, [dispatch, amount, isValid]);    
 
     // validation

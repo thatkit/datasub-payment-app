@@ -25,6 +25,7 @@ export const CardNumber = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         isValid && dispatch(addCardNumber(cardNumber));
+        !isValid && dispatch(addCardNumber(''));
     }, [dispatch, cardNumber, isValid]);    
 
     // validation

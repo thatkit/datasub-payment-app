@@ -29,6 +29,7 @@ export const ExpDate = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         isValid && dispatch(addExpDate(expDate));
+        !isValid && dispatch(addExpDate(''));
     }, [dispatch, expDate, isValid]);    
 
     // turning into a single string
