@@ -23,6 +23,7 @@ export const isCorrectMMYYYFormat = str => {
 }
 
 export const isTwoDigitsAfterDecimalPoint = amount => {
+    console.log(amount)
     if (Number.isInteger(amount)) return true;
 
     const digitsAfterPoint = amount.toString().split('.')[1];

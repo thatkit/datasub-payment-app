@@ -6,6 +6,8 @@ import {
 } from 'reactstrap';
 // Hooks
 import { useState, useEffect } from 'react';
+// Helpers
+import { isStringLength, isNumber } from '../helpers/validation';
 
 export const Cvv = () => {
     const [cvv, setCvv] = useState('');
@@ -13,6 +15,18 @@ export const Cvv = () => {
     const [isValid, setIsValid] = useState(false);
 
     const handleOnChange = ({ target }) => setCvv(target.value);
+
+    // validation
+    useEffect(() => {
+        if (cvv === '') return setIsInvalid(false);
+        if (isStringLength(cvv, 3) && isNumber(cvv)) {
+            setIsInvalid(false);
+            setIsValid(true);
+            return null;
+        }
+        setIsInvalid(true);
+        setIsValid(false);
+    }, [cvv]);
 
     return (
         <FormGroup floating>
