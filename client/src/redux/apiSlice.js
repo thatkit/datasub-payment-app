@@ -11,14 +11,37 @@ const apiSlice = createSlice({
     name: 'apiSlice',
     initialState,
     reducers: {
-        addCardNumber(state, { payload }) {
+        addCardNumber(state, { payload: CardNumber }) {
             return {
                 ...state,
-                payload
+                CardNumber
+            }
+        },
+        addExpDate(state, { payload: ExpDate }) {
+            return {
+                ...state,
+                ExpDate
+            }
+        },
+        addCvv(state, { payload: Cvv }) {
+            return {
+                ...state,
+                Cvv
+            }
+        },
+        addAmount(state, { payload: Amount }) {
+            return {
+                ...state,
+                Amount
             }
         },
     },
 });
 
-export const { addCardNumber } = apiSlice.actions;
+export const {
+    addCardNumber,
+    addExpDate,
+    addCvv,
+    addAmount
+} = apiSlice.actions;
 export default apiSlice.reducer;

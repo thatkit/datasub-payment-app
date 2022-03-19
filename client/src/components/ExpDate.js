@@ -6,20 +6,30 @@ import {
     Label,
     FormFeedback
 } from 'reactstrap';
-// Hooks
+// React Hooks
 import { useState, useEffect } from 'react';
+// Redux Hooks & action dispatchers
+import { useDispatch } from 'react-redux';
+import { addExpDate } from '../redux/apiSlice';
 // Helpers
 import { isCorrectMMYYYFormat, isNotExpired } from '../helpers/validation';
 
 export const ExpDate = () => {
+    const handleOnChangeMM = ({ target }) => setExpDateMM(target.value);
+    const handleOnChangeYYYY = ({ target }) => setExpDateYYYY(target.value);
+    
+    // Internal state setup
     const [expDate, setExpDate] = useState('');
     const [expDateMM, setExpDateMM] = useState('');
     const [expDateYYYY, setExpDateYYYY] = useState('');
     const [isInvalid, setIsInvalid] = useState(false);
     const [isValid, setIsValid] = useState(false);
 
-    const handleOnChangeMM = ({ target }) => setExpDateMM(target.value);
-    const handleOnChangeYYYY = ({ target }) => setExpDateYYYY(target.value);
+    // Redux state setup
+    const dispatch = useDispatch();
+    useEffect(() => {
+        isValid && dispatch(addExpDate(expDate));
+    }, [dispatch, expDate, isValid]);    
 
     // turning into a single string
     useEffect(() => {
