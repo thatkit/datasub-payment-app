@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
     CardNumber: '',
@@ -18,7 +18,7 @@ const apiSlice = createSlice({
             }
         },
     },
-})
+});
 
 export const { addCardNumber } = apiSlice.actions;
 export default apiSlice.reducer;
