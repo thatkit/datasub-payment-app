@@ -1,0 +1,17 @@
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dateAndCvvRow {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.submitBtn {
+    height: 100%;
+    width: 100%;
+}
