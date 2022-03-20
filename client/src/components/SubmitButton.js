@@ -5,7 +5,6 @@ import styles from './SubmitButton.module.css';
 import { useState, useEffect } from 'react';
 // Redux Hooks & mutation dispatcher
 import { useSelector } from 'react-redux';
-import { useSubmitPaymentMutation } from '../redux/apiService';
 
 export const SubmitButton = ({ disabled, handleOnClick }) => {
     // button props
