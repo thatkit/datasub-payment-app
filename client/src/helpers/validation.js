@@ -1,8 +1,16 @@
-export const isStringLength = (str, length) => str.length === length;
+export const isStringLength = (str, length) => {
+    return [
+        str.length === length,
+        'Credit card must contain 16 digits'
+    ];
+}
 
-export const isNumber = str => str
-    .split('')
-    .every(char => !isNaN(char));
+export const isNumber = str => {
+    return [
+        str.split('').every(char => !isNaN(char)),
+        'Please, use only digits'
+    ];
+}
 
 export const isCorrectMMYYYFormat = str => {
     // is there '/'?
@@ -19,7 +27,7 @@ export const isCorrectMMYYYFormat = str => {
     // is expiry year no more than 100 years from now?
     if (Number(strArr[1]) > new Date().getFullYear() + 100) return false;
     
-    return true;
+    return [true, 'Please, insert a correct date'];
 }
 
 export const isTwoDigitsAfterDecimalPoint = amount => {

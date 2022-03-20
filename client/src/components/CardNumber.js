@@ -21,6 +21,7 @@ export const CardNumber = ({ disabled }) => {
     const [cardNumber, setCardNumber] = useState('');
     const [isInvalid, setIsInvalid] = useState(false);
     const [isValid, setIsValid] = useState(false);
+    const [errMes, setErrMes] = useState('');
 
     // Redux state setup
     const dispatch = useDispatch();
@@ -32,13 +33,17 @@ export const CardNumber = ({ disabled }) => {
     // validation
     useEffect(() => {
         if (cardNumber === '') return setIsInvalid(false);
-        if (isStringLength(cardNumber, 16) && isNumber(cardNumber)) {
+        if (isStringLength(cardNumber, 16)[0] && isNumber(cardNumber)[0]) {
             setIsInvalid(false);
             setIsValid(true);
             return null;
         }
         setIsInvalid(true);
         setIsValid(false);
+
+        // set error message
+        !isStringLength(cardNumber, 16)[0] && setErrMes(isStringLength(cardNumber, 16)[1]);
+        !isNumber(cardNumber)[0] && setErrMes(isNumber(cardNumber)[1]);
     }, [cardNumber]);
 
     return (
@@ -62,7 +67,7 @@ export const CardNumber = ({ disabled }) => {
                     Card Number
                 </Label>
                 <FormFeedback tooltip>
-                    Invalid
+                    {errMes}
                 </FormFeedback>
             </FormGroup>
         </Col>
