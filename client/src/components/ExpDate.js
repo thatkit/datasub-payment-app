@@ -6,6 +6,7 @@ import {
     Label,
     FormFeedback
 } from 'reactstrap';
+import styles from './ExpDate.module.css';
 // React Hooks
 import { useState, useEffect } from 'react';
 // Redux Hooks & action dispatchers
@@ -53,12 +54,13 @@ export const ExpDate = ({ disabled }) => {
     return (
         <>
             <Col xs="6" sm="3">
-                <FormGroup floating>
-                    <Input 
+                <FormGroup floating className={styles.mm}>
+                    <Input
                         id="expDateMM"
                         name="expDateMM"
                         placeholder="MM"
                         type="text"
+                        maxLength="2"
                         autoComplete="cc-exp-month"
                         onChange={handleOnChangeMM}
                         invalid={isInvalid}
@@ -80,6 +82,7 @@ export const ExpDate = ({ disabled }) => {
                         name="expDateYYYY"
                         placeholder="YYYY"
                         type="text"
+                        maxLength="4"
                         autoComplete="cc-exp-year"
                         onChange={handleOnChangeYYYY}
                         invalid={isInvalid}

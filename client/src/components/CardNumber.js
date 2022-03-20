@@ -49,6 +49,7 @@ export const CardNumber = ({ disabled }) => {
                     name="cardNumber"
                     placeholder="Card Number"
                     type="text"
+                    maxLength="16"
                     autoComplete="cc-number"
                     onChange={handleOnChange}
                     invalid={isInvalid}

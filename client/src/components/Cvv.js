@@ -47,7 +47,8 @@ export const Cvv = ({ disabled }) => {
                     id="cvv"
                     name="cvv"
                     placeholder="CVV"
-                    type="text"
+                    type="password"
+                    maxLength="3"
                     autoComplete="cc-csc"
                     onChange={handleOnChange}
                     invalid={isInvalid}

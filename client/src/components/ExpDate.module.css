@@ -1,0 +1,7 @@
+.mm::after {
+    content: '/';
+    padding-left: 0.5rem;
+    position: absolute;
+    bottom: calc(50% - 0.5rem);
+    left: 100%;
+}
