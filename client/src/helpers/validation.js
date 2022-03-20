@@ -1,7 +1,7 @@
 export const isStringLength = (str, length) => {
     return [
         str.length === length,
-        'Credit card must contain 16 digits'
+        `The number must contain ${length} digits`
     ];
 }
 
@@ -32,12 +32,14 @@ export const isCorrectMMYYYFormat = str => {
 }
 
 export const isTwoDigitsAfterDecimalPoint = amount => {
-    if (Number.isInteger(amount)) return true;
+    let isCorrect = [true, 'The amount must contain only two digits after the decimal point']
+
+    if (Number.isInteger(amount)) return isCorrect;
 
     const digitsAfterPoint = amount.toString().split('.')[1];
-    if (digitsAfterPoint.length <= 2) return true;
+    if (digitsAfterPoint.length <= 2) return isCorrect;
 
-    return false;
+    return [false, 'The amount must contain only two digits after the decimal point'];
 }
 
 export const isNotExpired = date => {

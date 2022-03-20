@@ -22,6 +22,7 @@ export const Amount = ({ disabled }) => {
     const [amount, setAmount] = useState(0);
     const [isInvalid, setIsInvalid] = useState(false);
     const [isValid, setIsValid] = useState(false);
+    const [errMes, setErrMes] = useState('');
 
     // Redux state setup
     const dispatch = useDispatch();
@@ -33,13 +34,17 @@ export const Amount = ({ disabled }) => {
     // validation
     useEffect(() => {
         if (amount === 0) return setIsInvalid(false);
-        if ((amount > 0) && isTwoDigitsAfterDecimalPoint(amount)) {
+        if ((amount > 0) && isTwoDigitsAfterDecimalPoint(amount)[0]) {
             setIsInvalid(false);
             setIsValid(true);
             return null;
         }
         setIsInvalid(true);
         setIsValid(false);
+
+        // set error message
+        amount <= 0 && setErrMes('Please, insert a positive decimal');
+        !isTwoDigitsAfterDecimalPoint(amount)[0] && setErrMes(isTwoDigitsAfterDecimalPoint(amount)[1]);        
     }, [amount]);
 
     return (
@@ -62,7 +67,7 @@ export const Amount = ({ disabled }) => {
                     Amount
                 </Label>
                 <FormFeedback tooltip>
-                    Invalid
+                    {errMes}
                 </FormFeedback>
             </FormGroup>
         </Col>

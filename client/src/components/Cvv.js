@@ -20,6 +20,7 @@ export const Cvv = ({ disabled }) => {
     const [cvv, setCvv] = useState('');
     const [isInvalid, setIsInvalid] = useState(false);
     const [isValid, setIsValid] = useState(false);
+    const [errMes, setErrMes] = useState('');
 
     // Redux state setup
     const dispatch = useDispatch();
@@ -31,13 +32,17 @@ export const Cvv = ({ disabled }) => {
     // validation
     useEffect(() => {
         if (cvv === '') return setIsInvalid(false);
-        if (isStringLength(cvv, 3) && isNumber(cvv)) {
+        if (isStringLength(cvv, 3)[0] && isNumber(cvv)[0]) {
             setIsInvalid(false);
             setIsValid(true);
             return null;
         }
         setIsInvalid(true);
         setIsValid(false);
+
+        // set error message
+        !isStringLength(cvv, 3)[0] && setErrMes(isStringLength(cvv, 3)[1]);
+        !isNumber(cvv)[0] && setErrMes(isNumber(cvv)[1]);        
     }, [cvv]);
 
     return (
@@ -60,7 +65,7 @@ export const Cvv = ({ disabled }) => {
                     CVV
                 </Label>
                 <FormFeedback tooltip>
-                    Invalid
+                    {errMes}
                 </FormFeedback>
             </FormGroup>
         </Col>
