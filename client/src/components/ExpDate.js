@@ -25,6 +25,7 @@ export const ExpDate = ({ disabled }) => {
     const [expDateYYYY, setExpDateYYYY] = useState('');
     const [isInvalid, setIsInvalid] = useState(false);
     const [isValid, setIsValid] = useState(false);
+    const [errMes, setErrMes] = useState('');
 
     // Redux state setup
     const dispatch = useDispatch();
@@ -42,13 +43,17 @@ export const ExpDate = ({ disabled }) => {
     // validation
     useEffect(() => {
         if (expDate === '' || expDate === '/') return setIsInvalid(false);
-        if (isCorrectMMYYYFormat(expDate) && isNotExpired(expDate)) {
+        if (isCorrectMMYYYFormat(expDate)[0] && isNotExpired(expDate)[0]) {
             setIsInvalid(false);
             setIsValid(true);
             return null;
         }
         setIsInvalid(true);
         setIsValid(false);
+
+        // set error message
+        !isNotExpired(expDate)[0] && setErrMes(isNotExpired(expDate)[1]);
+        !isCorrectMMYYYFormat(expDate)[0] && setErrMes(isCorrectMMYYYFormat(expDate)[1]);
     }, [expDate]);
     
     return (
@@ -72,7 +77,7 @@ export const ExpDate = ({ disabled }) => {
                         MM
                     </Label>
                     <FormFeedback tooltip>
-                        Invalid
+                        {errMes}
                     </FormFeedback>                    
                 </FormGroup>
             </Col>
