@@ -11,7 +11,7 @@
 ### Стэк технологий
 
  - Frontend: React.js, Redux Toolkit, RTKQ Mutation, reactstrap;
- - Backend: Express.js, Nodes.js, mongoose.js;
+ - Backend: Express.js, Nodes.js, mongoose.js, Postman;
  - БД: MongoDB.
 
 ### Конфигурация `.env`
