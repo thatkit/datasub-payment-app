@@ -34,12 +34,7 @@ export const SubmitButton = () => {
 
     // RTK Mutation
     const [submitPayment, result] = useSubmitPaymentMutation();
-    const handleOnClick = () => submitPayment({
-        CardNumber: '1234123412341234',
-        ExpDate: '04/2022',
-        Cvv: '123',
-        Amount: 100.5
-    });
+    const handleOnClick = () => submitPayment(apiSlice);
     useEffect(() => console.log(result), [result]);
     
     return (
