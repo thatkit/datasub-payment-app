@@ -55,6 +55,7 @@ export const CardNumber = ({ disabled }) => {
                     invalid={isInvalid}
                     valid={isValid}
                     disabled={disabled}
+                    autoFocus
                 />
                 <Label for="cardNumber">
                     Card Number
