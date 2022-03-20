@@ -13,7 +13,7 @@ import { addCvv } from '../redux/apiSlice';
 // Helpers
 import { isStringLength, isNumber } from '../helpers/validation';
 
-export const Cvv = () => {
+export const Cvv = ({ disabled }) => {
     const handleOnChange = ({ target }) => setCvv(target.value);
 
     // Internal state setup
@@ -51,7 +51,8 @@ export const Cvv = () => {
                     autoComplete="cc-csc"
                     onChange={handleOnChange}
                     invalid={isInvalid}
-                    valid={isValid}                
+                    valid={isValid}
+                    disabled={disabled}
                 />
                 <Label for="cvv">
                     CVV

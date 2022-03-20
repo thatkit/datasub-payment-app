@@ -14,7 +14,7 @@ import { addCardNumber } from '../redux/apiSlice';
 // Helpers
 import { isStringLength, isNumber } from '../helpers/validation';
 
-export const CardNumber = () => {
+export const CardNumber = ({ disabled }) => {
     const handleOnChange = ({ target }) => setCardNumber(target.value);
     
     // Internal state setup
@@ -53,6 +53,7 @@ export const CardNumber = () => {
                     onChange={handleOnChange}
                     invalid={isInvalid}
                     valid={isValid}
+                    disabled={disabled}
                 />
                 <Label for="cardNumber">
                     Card Number

@@ -13,7 +13,7 @@ import { addAmount } from '../redux/apiSlice';
 // Helpers
 import { isTwoDigitsAfterDecimalPoint } from '../helpers/validation';
 
-export const Amount = () => {
+export const Amount = ({ disabled }) => {
     const handleOnChange = ({ target }) => setAmount(Number(target.value));
 
     // Internal state setup
@@ -51,7 +51,8 @@ export const Amount = () => {
                     autoComplete="transaction-amount"
                     onChange={handleOnChange}
                     invalid={isInvalid}
-                    valid={isValid}                
+                    valid={isValid}
+                    disabled={disabled}
                 />
                 <Label for="amount">
                     Amount

@@ -14,7 +14,7 @@ import { addExpDate } from '../redux/apiSlice';
 // Helpers
 import { isCorrectMMYYYFormat, isNotExpired } from '../helpers/validation';
 
-export const ExpDate = () => {
+export const ExpDate = ({ disabled }) => {
     const handleOnChangeMM = ({ target }) => setExpDateMM(target.value);
     const handleOnChangeYYYY = ({ target }) => setExpDateYYYY(target.value);
     
@@ -62,7 +62,8 @@ export const ExpDate = () => {
                         autoComplete="cc-exp-month"
                         onChange={handleOnChangeMM}
                         invalid={isInvalid}
-                        valid={isValid}                        
+                        valid={isValid}
+                        disabled={disabled}
                     />
                     <Label for="expDateMM">
                         MM
@@ -83,6 +84,7 @@ export const ExpDate = () => {
                         onChange={handleOnChangeYYYY}
                         invalid={isInvalid}
                         valid={isValid}
+                        disabled={disabled}
                     />
                     <Label for="expDateYYYY">
                         YYYY
