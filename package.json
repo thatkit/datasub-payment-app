@@ -2,7 +2,7 @@
   "name": "datasub_payment_app",
   "version": "1.0.0",
   "description": "Test for DataSub from 2022-03-19",
-  "main": "backend/server.js",
+  "main": "server.js",
   "scripts": {
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
     "server": "nodemon backend/server.js",
