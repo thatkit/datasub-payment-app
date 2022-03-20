@@ -1,3 +1,4 @@
+// Styles
 import {
     Col,
     FormGroup,
@@ -5,6 +6,7 @@ import {
     Label,
     FormFeedback
 } from 'reactstrap';
+import styles from './Amount.module.css';
 // React Hooks
 import { useState, useEffect } from 'react';
 // Redux Hooks & action dispatchers
@@ -43,11 +45,13 @@ export const Amount = ({ disabled }) => {
     return (
         <Col xs="12" sm="6">
             <FormGroup floating>
-                <Input 
+                <Input
+                    className={styles.amountInput}
                     id="amount"
                     name="amount"
                     placeholder="Amount"
                     type="number"
+                    inputMode="decimal"
                     autoComplete="transaction-amount"
                     onChange={handleOnChange}
                     invalid={isInvalid}

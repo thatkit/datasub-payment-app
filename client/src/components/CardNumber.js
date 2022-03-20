@@ -44,11 +44,12 @@ export const CardNumber = ({ disabled }) => {
     return (
         <Col>
             <FormGroup floating>
-                <Input 
+                <Input
                     id="cardNumber"
                     name="cardNumber"
                     placeholder="Card Number"
                     type="text"
+                    inputMode="numeric"
                     maxLength="16"
                     autoComplete="cc-number"
                     onChange={handleOnChange}

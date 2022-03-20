@@ -60,6 +60,7 @@ export const ExpDate = ({ disabled }) => {
                         name="expDateMM"
                         placeholder="MM"
                         type="text"
+                        inputMode="numeric"
                         maxLength="2"
                         autoComplete="cc-exp-month"
                         onChange={handleOnChangeMM}
@@ -82,6 +83,7 @@ export const ExpDate = ({ disabled }) => {
                         name="expDateYYYY"
                         placeholder="YYYY"
                         type="text"
+                        inputMode="numeric"
                         maxLength="4"
                         autoComplete="cc-exp-year"
                         onChange={handleOnChangeYYYY}
