@@ -1,8 +1,5 @@
 // Styles
-import {
-    Col,
-    Button
-} from 'reactstrap';
+import { Col, Button } from 'reactstrap';
 import styles from './SubmitButton.module.css';
 // React Hooks
 import { useState, useEffect } from 'react';
@@ -26,7 +23,7 @@ export const SubmitButton = () => {
 
     // Internal state setup
     const [isValid, setIsValid] = useState('invalid');
-    
+
     // Redux state setup
     const apiSlice = useSelector(({ apiSlice }) => apiSlice);
     useEffect(() => {
