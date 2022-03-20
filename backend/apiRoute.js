@@ -10,7 +10,7 @@ const router = express.Router();
 // @access      PUBLIC
 router.post('/submitPayment', (req, res) => {
     const newPayment = new Payment(req.body);
-    
+    console.log(req.body)
     newPayment
         .save()
         .then(payment => {

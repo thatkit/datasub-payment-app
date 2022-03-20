@@ -1,17 +1,20 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const apiService = createApi({
-    baseQuery: fetchBaseQuery({ baseUrl: '/api' }),
+export const apiService = createApi({
+    reducerPath: 'apiService',
+    baseQuery: fetchBaseQuery({
+        baseUrl: '/api',
+    }),
     tagTypes: ['Payment'],
     endpoints: build => ({
         submitPayment: build.mutation({
-            query: paymentData => ({
+            query: body => ({
                 url: '/submitPayment',
                 method: 'POST',
-                body: paymentData
+                body
             }),
-            transformResponse: (response, meta, arg) => response.data,
-            invalidatesTags: ['Post']
+            transformResponse: (response, meta, arg) => response,
+            invalidatesTags: ['Post'],
         }),
     }),
 });

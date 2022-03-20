@@ -5,6 +5,7 @@ import styles from './SubmitButton.module.css';
 import { useState, useEffect } from 'react';
 // Redux Hooks & action dispatchers
 import { useSelector } from 'react-redux';
+import { useSubmitPaymentMutation } from '../redux/apiService';
 
 export const SubmitButton = () => {
     // button props
@@ -22,7 +23,7 @@ export const SubmitButton = () => {
     }
 
     // Internal state setup
-    const [isValid, setIsValid] = useState('invalid');
+    const [isValid, setIsValid] = useState('invalid'); // #
 
     // Redux state setup
     const apiSlice = useSelector(({ apiSlice }) => apiSlice);
@@ -30,14 +31,25 @@ export const SubmitButton = () => {
         const areAllValid = Object.values(apiSlice).every(value => Boolean(value));
         areAllValid ? setIsValid('valid') : setIsValid('invalid');
     }, [apiSlice]);
+
+    // RTK Mutation
+    const [submitPayment, result] = useSubmitPaymentMutation();
+    const handleOnClick = () => submitPayment({
+        CardNumber: '1234123412341234',
+        ExpDate: '04/2022',
+        Cvv: '123',
+        Amount: 100.5
+    });
+    useEffect(() => console.log(result), [result]);
     
     return (
         <Col xs="12" sm="6" className="mb-3">
             <Button
-                className={buttonProps[isValid].classNames}
-                color={buttonProps[isValid].color}
-                active={buttonProps[isValid].active}
-                disabled={!buttonProps[isValid].active}
+                className={buttonProps['valid'].classNames}
+                color={buttonProps['valid'].color}
+                active={buttonProps['valid'].active}
+                disabled={!buttonProps['valid'].active}
+                onClick={handleOnClick}
             >
                 Submit payment
             </Button>
