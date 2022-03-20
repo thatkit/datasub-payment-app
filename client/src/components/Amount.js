@@ -1,4 +1,5 @@
 import {
+    Col,
     FormGroup,
     Input,
     Label,
@@ -40,23 +41,25 @@ export const Amount = () => {
     }, [amount]);
 
     return (
-        <FormGroup floating>
-            <Input 
-                id="amount"
-                name="amount"
-                placeholder="Amount"
-                type="number"
-                autoComplete="transaction-amount"
-                onChange={handleOnChange}
-                invalid={isInvalid}
-                valid={isValid}                
-            />
-            <Label for="amount">
-                Amount
-            </Label>
-            <FormFeedback tooltip>
-                Invalid
-            </FormFeedback>
-        </FormGroup>
+        <Col xs="12" sm="6">
+            <FormGroup floating>
+                <Input 
+                    id="amount"
+                    name="amount"
+                    placeholder="Amount"
+                    type="number"
+                    autoComplete="transaction-amount"
+                    onChange={handleOnChange}
+                    invalid={isInvalid}
+                    valid={isValid}                
+                />
+                <Label for="amount">
+                    Amount
+                </Label>
+                <FormFeedback tooltip>
+                    Invalid
+                </FormFeedback>
+            </FormGroup>
+        </Col>
     )
 }

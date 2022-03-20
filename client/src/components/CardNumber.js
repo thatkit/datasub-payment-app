@@ -1,5 +1,6 @@
 // Styles
 import {
+    Col,
     FormGroup,
     Input,
     Label,
@@ -41,23 +42,25 @@ export const CardNumber = () => {
     }, [cardNumber]);
 
     return (
-        <FormGroup floating>
-            <Input 
-                id="cardNumber"
-                name="cardNumber"
-                placeholder="Card Number"
-                type="text"
-                autoComplete="cc-number"
-                onChange={handleOnChange}
-                invalid={isInvalid}
-                valid={isValid}
-            />
-            <Label for="cardNumber">
-                Card Number
-            </Label>
-            <FormFeedback tooltip>
-                Invalid
-            </FormFeedback>
-        </FormGroup>
+        <Col>
+            <FormGroup floating>
+                <Input 
+                    id="cardNumber"
+                    name="cardNumber"
+                    placeholder="Card Number"
+                    type="text"
+                    autoComplete="cc-number"
+                    onChange={handleOnChange}
+                    invalid={isInvalid}
+                    valid={isValid}
+                />
+                <Label for="cardNumber">
+                    Card Number
+                </Label>
+                <FormFeedback tooltip>
+                    Invalid
+                </FormFeedback>
+            </FormGroup>
+        </Col>
     )
 }

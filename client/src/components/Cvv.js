@@ -1,4 +1,5 @@
 import {
+    Col,
     FormGroup,
     Input,
     Label,
@@ -40,23 +41,25 @@ export const Cvv = () => {
     }, [cvv]);
 
     return (
-        <FormGroup floating>
-            <Input 
-                id="cvv"
-                name="cvv"
-                placeholder="CVV"
-                type="text"
-                autoComplete="cc-csc"
-                onChange={handleOnChange}
-                invalid={isInvalid}
-                valid={isValid}                
-            />
-            <Label for="cvv">
-                CVV
-            </Label>
-            <FormFeedback tooltip>
-                Invalid
-            </FormFeedback>
-        </FormGroup>
+        <Col xs="6" sm="3">
+            <FormGroup floating>
+                <Input 
+                    id="cvv"
+                    name="cvv"
+                    placeholder="CVV"
+                    type="text"
+                    autoComplete="cc-csc"
+                    onChange={handleOnChange}
+                    invalid={isInvalid}
+                    valid={isValid}                
+                />
+                <Label for="cvv">
+                    CVV
+                </Label>
+                <FormFeedback tooltip>
+                    Invalid
+                </FormFeedback>
+            </FormGroup>
+        </Col>
     )
 }
